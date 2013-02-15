@@ -7,7 +7,7 @@ class IndexController {
         $this->_view = new stdClass();
     }
  public function Index(){
-     $this->_view->form = 'search.php';
+     $this->_view->searchForm = 'search.php';
      $this->_view->entries =  $this->_model->fetchAll();
      return $this->_view;
  }
@@ -17,10 +17,13 @@ class IndexController {
      return $this->_view; 
  }
  public function Search(){
-     $this->_view->form = 'search.php';
-     if(isset($_POST['submit'])){
+    $this->_view->searchForm = 'search.php';
+    if (isset($_POST['submit'])) {
 	     $this->_view->entries = $this->_model->fetchAll();
-	 }
-	 return $this->_view;
+    }
+    return $this->_view;
+ }
+ public function render(){
+     include '../Views/template.php'; 
  }
 }

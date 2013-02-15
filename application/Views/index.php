@@ -1,7 +1,7 @@
 <?php 
 include $this->searchForm;
 if(!empty($this->entries)){
-    echo '<dl>'
+    echo '<dl>';
     foreach ($this->entries as $idx => $entry ){
         printf( '<dt>Row#%s</dt>', $idx);
         echo '<dd>';
