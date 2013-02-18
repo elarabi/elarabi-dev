@@ -1,3 +1,3 @@
 <?php 
 $application = new IndexController();
-$application->render();
+$application->_view->render();
