@@ -1,5 +1,6 @@
 <?php 
 class ObjectModel {
+    // The record data
     private $_data = array();
 
     // For the testing purpose lets simulate a list of rows for this Model
@@ -15,8 +16,9 @@ class ObjectModel {
             $fname = $this->_generateName($i);
             $lname = $this->_generateName($i);
             $row = array(
+               // 'id' => $i,
                 'fname' => $fname,
-                'lnam' => $lname,
+                'lname' => $lname,
                 'email' => $fname.$lname.'@sample.net',
                 'profession' => 'Kind Of Services',
                 'location' => 'Calgary, AB CA',
@@ -25,27 +27,27 @@ class ObjectModel {
         }
     }
     public function get($field=null){
-        if($filed) {
-            return (isset($this->_data[$fields]))?$this->_data[$fields]:null;
+        if($field) {
+            return (isset($this->_data[$field])?$this->_data[$field]:null);
         } else {
             return $this->_data;
         }
     }
     public function set($val, $field=null){
-        if($filed) {
+        if($field) {
             $this->_data[$field] = $value;
         } else {
             $this->_data = is_array($val)?$val:array($val);
         }
     }
     public function find($id){
-        if (array_key($this->_rows)) {
-            $this->set($this->_rows[$i]);
+        if (is_array($this->_rows)) {
+            $this->set($this->_rows[$id]);
             return $this;
         }
         return null;
     }
-    public function fechAll(){
+    public function fetchAll(){
         return $this->_rows;
     }
     private function _generateName($i){
